@@ -666,7 +666,99 @@
                         ]
                     },
                     {
-                        "description": "Ctrl+Tab toggles layer_4 with shell_command",
+                        "description": "dl to L3",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "df_quick_tap",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "delete_forward",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "df_quick_tap",
+                                            "value": 0
+                                        }
+                                    },
+                                    {
+                                        "key_code": "delete_forward",
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "df_quick_tap",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "delete_forward",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "parameters": {
+                                    "basic.to_delayed_action_delay_milliseconds": 300,
+                                    "basic.to_if_alone_timeout_milliseconds": 500
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "df_quick_tap",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "layer_3",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "to_delayed_action": {
+                                    "to_if_canceled": [
+                                        {
+                                            "set_variable": {
+                                                "name": "df_quick_tap",
+                                                "value": 0
+                                            }
+                                        }
+                                    ],
+                                    "to_if_invoked": [
+                                        {
+                                            "set_variable": {
+                                                "name": "df_quick_tap",
+                                                "value": 0
+                                            }
+                                        }
+                                    ]
+                                },
+                                "to_if_alone": [{ "key_code": "delete_forward" }],
+                                "to_if_held_down": [
+                                    {
+                                        "set_variable": {
+                                            "name": "layer_3",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Ctrl+Tab toggles layer_4 and sends",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -689,8 +781,7 @@
                                             "name": "layer_4",
                                             "value": 1
                                         }
-                                    },
-                                    { "shell_command": "/Users/admin1/.config/karabiner/layer-chacker-folder/layer-4.sh" }
+                                    }
                                 ],
                                 "type": "basic"
                             },
@@ -715,15 +806,14 @@
                                             "name": "layer_4",
                                             "value": 0
                                         }
-                                    },
-                                    { "shell_command": "/Users/admin1/.config/karabiner/layer-chacker-folder/layer-reset.sh" }
+                                    }
                                 ],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "spc to L1_BS with shell_command on layer_1 toggle",
+                        "description": "spc to L1_BS",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -786,8 +876,7 @@
                                             "name": "layer_1",
                                             "value": 1
                                         }
-                                    },
-                                    { "shell_command": "/Users/admin1/.config/karabiner/layer-chacker-folder/layer-1.sh" }
+                                    }
                                 ],
                                 "to_after_key_up": [
                                     {
@@ -795,8 +884,7 @@
                                             "name": "layer_1",
                                             "value": 0
                                         }
-                                    },
-                                    { "shell_command": "/Users/admin1/.config/karabiner/layer-chacker-folder/layer-reset.sh" }
+                                    }
                                 ],
                                 "to_delayed_action": {
                                     "to_if_canceled": [
@@ -852,8 +940,7 @@
                                             "name": "layer_1",
                                             "value": 1
                                         }
-                                    },
-                                    { "shell_command": "/Users/admin1/.config/karabiner/layer-chacker-folder/layer-1.sh" }
+                                    }
                                 ],
                                 "to_after_key_up": [
                                     {
@@ -861,8 +948,7 @@
                                             "name": "layer_1",
                                             "value": 0
                                         }
-                                    },
-                                    { "shell_command": "/Users/admin1/.config/karabiner/layer-chacker-folder/layer-reset.sh" }
+                                    }
                                 ],
                                 "to_delayed_action": {
                                     "to_if_canceled": [
@@ -888,172 +974,7 @@
                         ]
                     },
                     {
-                        "description": "spc to L4_DEL with shell_command on layer_4 toggle",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "rald_df",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "layer_3",
-                                        "type": "variable_if",
-                                        "value": 0
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "delete_forward",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "rald_df",
-                                            "value": 0
-                                        }
-                                    },
-                                    { "key_code": "delete_forward" }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "rald_df",
-                                        "type": "variable_if",
-                                        "value": 0
-                                    },
-                                    {
-                                        "name": "layer_3",
-                                        "type": "variable_if",
-                                        "value": 0
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "delete_forward",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 200,
-                                    "basic.to_if_alone_timeout_milliseconds": 500
-                                },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "rald_df",
-                                            "value": 1
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "layer_3",
-                                            "value": 1
-                                        }
-                                    },
-                                    { "shell_command": "/Users/admin1/.config/karabiner/layer-chacker-folder/layer-4.sh" }
-                                ],
-                                "to_after_key_up": [
-                                    {
-                                        "set_variable": {
-                                            "name": "layer_3",
-                                            "value": 0
-                                        }
-                                    },
-                                    { "shell_command": "/Users/admin1/.config/karabiner/layer-chacker-folder/layer-reset.sh" }
-                                ],
-                                "to_delayed_action": {
-                                    "to_if_canceled": [
-                                        {
-                                            "set_variable": {
-                                                "name": "rald_df",
-                                                "value": 0
-                                            }
-                                        }
-                                    ],
-                                    "to_if_invoked": [
-                                        {
-                                            "set_variable": {
-                                                "name": "rald_df",
-                                                "value": 0
-                                            }
-                                        }
-                                    ]
-                                },
-                                "to_if_alone": [{ "key_code": "delete_forward" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "rald_df",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "layer_3",
-                                        "type": "variable_if",
-                                        "value": 0
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "spacebar",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 200,
-                                    "basic.to_if_alone_timeout_milliseconds": 500
-                                },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "rald_df",
-                                            "value": 1
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "layer_3",
-                                            "value": 1
-                                        }
-                                    },
-                                    { "shell_command": "/Users/admin1/.config/karabiner/layer-chacker-folder/layer-4.sh" }
-                                ],
-                                "to_after_key_up": [
-                                    {
-                                        "set_variable": {
-                                            "name": "layer_3",
-                                            "value": 0
-                                        }
-                                    },
-                                    { "shell_command": "/Users/admin1/.config/karabiner/layer-chacker-folder/layer-reset.sh" }
-                                ],
-                                "to_delayed_action": {
-                                    "to_if_canceled": [
-                                        {
-                                            "set_variable": {
-                                                "name": "rald_df",
-                                                "value": 0
-                                            }
-                                        }
-                                    ],
-                                    "to_if_invoked": [
-                                        {
-                                            "set_variable": {
-                                                "name": "rald_df",
-                                                "value": 0
-                                            }
-                                        }
-                                    ]
-                                },
-                                "to_if_alone": [{ "key_code": "delete_forward" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "R⌘ to L2_spc with shell_command on layer_2 toggle",
+                        "description": "R⌘ to L2_spc",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1116,8 +1037,7 @@
                                             "name": "layer_2",
                                             "value": 1
                                         }
-                                    },
-                                    { "shell_command": "/Users/admin1/.config/karabiner/layer-chacker-folder/layer-2.sh" }
+                                    }
                                 ],
                                 "to_after_key_up": [
                                     {
@@ -1125,8 +1045,7 @@
                                             "name": "layer_2",
                                             "value": 0
                                         }
-                                    },
-                                    { "shell_command": "/Users/admin1/.config/karabiner/layer-chacker-folder/layer-reset.sh" }
+                                    }
                                 ],
                                 "to_delayed_action": {
                                     "to_if_canceled": [
@@ -1182,8 +1101,7 @@
                                             "name": "layer_2",
                                             "value": 1
                                         }
-                                    },
-                                    { "shell_command": "/Users/admin1/.config/karabiner/layer-chacker-folder/layer-2.sh" }
+                                    }
                                 ],
                                 "to_after_key_up": [
                                     {
@@ -1191,8 +1109,7 @@
                                             "name": "layer_2",
                                             "value": 0
                                         }
-                                    },
-                                    { "shell_command": "/Users/admin1/.config/karabiner/layer-chacker-folder/layer-reset.sh" }
+                                    }
                                 ],
                                 "to_delayed_action": {
                                     "to_if_canceled": [
@@ -3548,7 +3465,7 @@
                                     "key_code": "b",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "mouse_key": { "horizontal_wheel": -64 } }],
+                                "to": [{ "mouse_key": { "horizontal_wheel": 64 } }],
                                 "type": "basic"
                             },
                             {
@@ -3608,7 +3525,7 @@
                                     "key_code": "g",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "mouse_key": { "vertical_wheel": 32 } }],
+                                "to": [{ "key_code": "vk_none" }],
                                 "type": "basic"
                             },
                             {
@@ -3728,7 +3645,7 @@
                                     "key_code": "v",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "mouse_key": { "vertical_wheel": -32 } }],
+                                "to": [{ "key_code": "vk_none" }],
                                 "type": "basic"
                             },
                             {
@@ -3825,7 +3742,6 @@
                     },
                     {
                         "description": "Layer_5",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
